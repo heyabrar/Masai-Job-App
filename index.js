@@ -4,11 +4,14 @@ const cors = require('cors');
 const app = express();
 
 const { connection } = require('./config/db');
-const { UserRouter } = require('./Routes/User.routes')
+const { UserRouter } = require('./Routes/User.routes');
+const { AdminRouter } = require('./Routes/Admin.routes')
 
 app.use(express.json());
 app.use(cors());
 app.use('/user', UserRouter);
+
+app.use('/admin', AdminRouter);
 
 app.listen(8080, async () => {
     try {
